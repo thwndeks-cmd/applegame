@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>사과 숫자 퍼즐</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>🍎 사과 숫자 퍼즐</h1>
+  </header>
+
+  <section class="hud">
+    <div class="score">점수: <span id="score">0</span></div>
+    <div class="timer">시간: <span id="time">60</span>s</div>
+    <button id="btn-restart" class="btn btn-primary">다시 시작</button>
+  </section>
+
+  <section id="start-screen" class="start-screen">
+    <div class="start-inner">
+      <div class="brand">GameSaien</div>
+      <h2 class="title"><span>Fruit</span> Box</h2>
+      <button id="btn-play" class="play-btn" aria-label="게임 시작">
+        <span class="stem" aria-hidden="true"></span>
+        <span class="leaf" aria-hidden="true"></span>
+        <span class="lobe l" aria-hidden="true"></span>
+        <span class="lobe r" aria-hidden="true"></span>
+        <span class="label">Play</span>
+      </button>
+      <div class="demo-apples" aria-hidden="true">
+        <div class="apple"><span class="label">5</span></div>
+        <div class="apple"><span class="label">7</span></div>
+        <div class="apple"><span class="label">6</span></div>
+        <div class="apple"><span class="label">8</span></div>
+        <div class="apple"><span class="label">3</span></div>
+        <div class="apple"><span class="label">2</span></div>
+        <div class="apple"><span class="label">9</span></div>
+        <div class="apple"><span class="label">1</span></div>
+        <div class="apple"><span class="label">4</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main id="game-wrap" class="board-wrap hidden">
+    <div>
+      <div id="status" class="status">상태: ready</div>
+      <div id="board" class="board" aria-label="사과 보드" role="grid">
+        <div id="drag-rect" class="drag-rect hidden"></div>
+      </div>
+    </div>
+    <div class="time-rail" aria-label="남은 시간">
+      <div id="time-fill" class="time-fill"></div>
+    </div>
+  </main>
+
+  <section class="rules">
+    <h3>게임 규칙</h3>
+    <ul>
+      <li>사과의 숫자 합이 10이 되도록 드래그로 선택하세요.</li>
+      <li>합이 10이면 선택된 사과가 제거되고, 점수는 선택한 개수만큼 올라갑니다.</li>
+      <li>점수 획득 시 작은 점수 팝업이 잠깐 표시됩니다.</li>
+      <li>선택한 사과 개수에 따라 남은 시간이 보너스로 연장됩니다.</li>
+      <li>제한 시간 종료 시 게임이 끝납니다.</li>
+    </ul>
+  </section>
+
+  <dialog id="intro-dialog" class="modal">
+    <h2>게임 설명</h2>
+    <ul>
+      <li>사과의 숫자 합이 10이 되도록 드래그하여 선택하세요.</li>
+      <li>합이 10이 아니면 선택이 취소됩니다.</li>
+      <li>조건을 달성하면 해당 사과들이 제거되고 빈칸은 비워둡니다.</li>
+      <li>점수는 제거한 사과의 개수입니다. 제한시간은 60초!</li>
+    </ul>
+    <form method="dialog">
+      <button class="btn btn-primary">시작</button>
+    </form>
+  </dialog>
+
+  <dialog id="end-dialog" class="modal">
+    <h2>게임 종료</h2>
+    <p>최종 점수: <strong id="final-score">0</strong></p>
+    <form method="dialog">
+      <button id="play-again" class="btn btn-primary">다시 하기</button>
+    </form>
+  </dialog>
+
+  <!-- 배경 음악 (사용자 상호작용 시 재생) -->
+  <audio id="bgm" src="사과의 리듬.mp3" loop preload="auto"></audio>
+
+  <script src="main.js"></script>
+</body>
+<!-- Made with ❤️ in Cursor -->
+</html>
+
+
